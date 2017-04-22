@@ -5,6 +5,7 @@ using DucksAndDinner.Api.Models;
 
 namespace DucksAndDinner.Api.Controllers
 {
+    [RoutePrefix("api/customer")]
     public class CustomerController : ApiController
     {
         readonly ICustomerRepository _customerRepository;
@@ -16,7 +17,6 @@ namespace DucksAndDinner.Api.Controllers
 
 
         [HttpPost]
-        [Route("api/customer")]
         public HttpResponseMessage RegisterCustomer(Customer customer)
         {
             if (string.IsNullOrWhiteSpace(customer.UserName))
@@ -27,6 +27,14 @@ namespace DucksAndDinner.Api.Controllers
             _customerRepository.Save(customer);
 
             return Request.CreateResponse(HttpStatusCode.OK);
+        }
+
+        [HttpGet]
+        public HttpResponseMessage GetAll()
+        {
+            var customers = _customerRepository.GetAll();
+
+            return Request.CreateResponse(HttpStatusCode.OK, customers);
         }
     }   
 }
