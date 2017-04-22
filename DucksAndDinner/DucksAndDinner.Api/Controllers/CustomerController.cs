@@ -14,6 +14,9 @@ namespace DucksAndDinner.Api.Controllers
             _customerRepository = customerRepository;
         }
 
+
+        [HttpPost]
+        [Route("api/customer")]
         public HttpResponseMessage RegisterCustomer(Customer customer)
         {
             if (string.IsNullOrWhiteSpace(customer.UserName))
