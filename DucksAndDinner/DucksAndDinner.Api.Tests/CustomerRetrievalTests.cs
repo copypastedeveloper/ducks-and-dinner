@@ -31,22 +31,22 @@ namespace DucksAndDinner.Api.Tests
         {
             //arrange
             _mockedCustomerRepository.Setup(x => x.GetAll())
-                .Returns(() =>
-                    new List<Customer>
-                    {
-                        new Customer {UserName = "Jimmy"},
-                        new Customer {UserName = "Steve"},
-                        new Customer {UserName = "Sally"}
-                    });
+                .Returns(() => new List<Customer>
+                {
+                    new Customer {UserName = "Jimmy"},
+                    new Customer {UserName = "Steve"},
+                    new Customer {UserName = "Sally"}
+                });
 
             //act
             var result = _controller.GetAll();
 
             //assert
             Assert.AreEqual(HttpStatusCode.OK, result.StatusCode);
-            var content = result.Content as ObjectContent<IEnumerable<Customer>>;
-            var returnValue = content.Value as IEnumerable<Customer>;
-            Assert.AreEqual(3, returnValue.Count());
+
+            IEnumerable<Customer> content;
+            result.TryGetContentValue(out content);
+            Assert.AreEqual(3, content.Count());
         }
     }
 }

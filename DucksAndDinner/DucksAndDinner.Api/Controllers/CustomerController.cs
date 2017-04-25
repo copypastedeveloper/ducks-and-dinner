@@ -15,8 +15,7 @@ namespace DucksAndDinner.Api.Controllers
             _customerRepository = customerRepository;
         }
 
-
-        [HttpPost]
+        [HttpPost,Route]
         public HttpResponseMessage RegisterCustomer(Customer customer)
         {
             if (string.IsNullOrWhiteSpace(customer.UserName))
@@ -29,7 +28,7 @@ namespace DucksAndDinner.Api.Controllers
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
-        [HttpGet]
+        [HttpGet,Route]
         public HttpResponseMessage GetAll()
         {
             var customers = _customerRepository.GetAll();
