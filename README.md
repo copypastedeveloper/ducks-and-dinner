@@ -15,6 +15,6 @@ The best app for eating duck on demand
 
 
 - [ ] Cancel a meal reservation
-- [ ] Bring your own duck
+- [x] Bring your own duck
 - [ ] Eat a duck
 
