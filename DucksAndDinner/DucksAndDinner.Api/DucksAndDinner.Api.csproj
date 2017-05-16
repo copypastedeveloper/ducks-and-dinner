@@ -181,6 +181,10 @@
     <Compile Include="Migrations\201705061856007_InitialMigration.Designer.cs">
       <DependentUpon>201705061856007_InitialMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705160022358_AddingReservations.cs" />
+    <Compile Include="Migrations\201705160022358_AddingReservations.Designer.cs">
+      <DependentUpon>201705160022358_AddingReservations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Duck.cs" />
@@ -208,6 +212,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201705061856007_InitialMigration.resx">
       <DependentUpon>201705061856007_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705160022358_AddingReservations.resx">
+      <DependentUpon>201705160022358_AddingReservations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
