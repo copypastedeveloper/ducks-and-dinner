@@ -164,6 +164,7 @@
     <Compile Include="Controllers\DuckController.cs" />
     <Compile Include="Controllers\ICustomerRepository.cs" />
     <Compile Include="Controllers\IDuckRepository.cs" />
+    <Compile Include="Controllers\ReservationController.cs" />
     <Compile Include="DAL\AppContext.cs" />
     <Compile Include="DAL\CustomerRepository.cs" />
     <Compile Include="DAL\DuckRepository.cs" />
@@ -183,6 +184,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Duck.cs" />
+    <Compile Include="Models\Reservation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +203,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Reservation\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201705061856007_InitialMigration.resx">

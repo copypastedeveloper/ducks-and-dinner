@@ -8,5 +8,6 @@ namespace DucksAndDinner.Api.DAL
         public AppContext() : base("DucksAndDinner") {}
 
         public DbSet<Duck> Ducks { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
     }
 }
