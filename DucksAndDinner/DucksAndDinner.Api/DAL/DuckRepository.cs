@@ -1,4 +1,5 @@
-﻿using DucksAndDinner.Api.Controllers;
+﻿using System.Collections.Generic;
+using DucksAndDinner.Api.Controllers;
 using DucksAndDinner.Api.Models;
 
 namespace DucksAndDinner.Api.DAL
@@ -16,6 +17,16 @@ namespace DucksAndDinner.Api.DAL
         {
             _context.Ducks.Add(newDuck);
             _context.SaveChanges();
+        }
+
+        public Duck Get(int id)
+        {
+            return _context.Ducks.Find(id);
+        }
+
+        public IEnumerable<Duck> GetAll()
+        {
+            return _context.Ducks;
         }
     }
 }

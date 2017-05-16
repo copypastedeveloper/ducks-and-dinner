@@ -9,16 +9,44 @@ namespace DucksAndDinner.Api.Controllers
 {
     public class ReservationController : Controller
     {
+        readonly IReservationRepository _reservationRepository;
+        readonly IDuckRepository _duckRepository;
+
+        public ReservationController(IReservationRepository reservationRepository, IDuckRepository duckRepository)
+        {
+            _reservationRepository = reservationRepository;
+            _duckRepository = duckRepository;
+        }
+
         // GET: Reservation
         public ActionResult Index()
         {
-            return View();
+            var ducks = _duckRepository.GetAll();
+            var viewModel = new CreateReservationViewModel
+            {
+                Ducks = ducks.Select(x => new SelectListItem {Text = x.Name, Value = x.Id.ToString()}).ToList(),
+                NumberOfPeople = 5,
+                DuckId = 7,
+                Date = new DateTime(2017,5,19)
+            };
+
+            return View("Index",viewModel);
         }
 
         [HttpPost]
-        public ActionResult CreateReservation(Reservation reservation)
+        public ActionResult CreateReservation(CreateReservationViewModel reservation)
         {
-            throw new NotImplementedException();
+            var res = new Reservation
+            {
+                Date = reservation.Date,
+                NumberOfPeople = reservation.NumberOfPeople
+            };
+
+            res.DuckIAmEating = _duckRepository.Get(reservation.DuckId);
+
+            _reservationRepository.Save(res);
+
+            return RedirectToAction("Index");
         }
     }
 }
